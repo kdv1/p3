@@ -90,8 +90,9 @@ void p3_fill_tile(void *tile, int color)
 			memset(tile, 0xFF, 16);
 			break;
 		}
+	} else {
+		set_last_error("p3_fill_tile(): bad 'tile' argument");
 	}
-	set_last_error("p3_fill_tile(): bad 'tile' argument");
 }
 
 int p3_get_tile_pixel(void *tile, int x, int y)
@@ -137,8 +138,9 @@ void p3_set_tile_pixel(void *tile, int x, int y, int color)
 		/* Put back pixel bytes */
 		((byte *) tile)[y] = bit0;
 		((byte *) tile)[y + 8] = bit1;
+	} else {
+		set_last_error("p3_set_tile_pixel(): bad 'tile' argument");
 	}
-	set_last_error("p3_set_tile_pixel(): bad 'tile' argument");
 }
 
 int p3_is_tile_transparent(void *tile)
@@ -153,8 +155,9 @@ int p3_is_tile_transparent(void *tile)
 
 		/* No opaque pixels */
 		return TRUE;
+	} else {
+		set_last_error("p3_is_tile_transparent(): bad 'tile' argument");
 	}
-	set_last_error("p3_is_tile_transparent(): bad 'tile' argument");
 	return 0;
 }
 
@@ -184,8 +187,9 @@ int p3_is_tile_has_alpha(void *tile)
 
 		/* No transparent pixels */
 		return FALSE;
+	} else {
+		set_last_error("p3_is_tile_has_alpha(): bad 'tile' argument");
 	}
-	set_last_error("p3_is_tile_has_alpha(): bad 'tile' argument");
 	return 0;
 }
 
